@@ -43,7 +43,7 @@ namespace wall.Factory
                 List<Message> combo = messages.GroupJoin(comments, message => message.id, comment => comment.messageid,
                                         (message, matchedComments) =>
                                         {
-                                            message.comments = comments.ToList();
+                                            message.comments = matchedComments.ToList();
                                             return message;
                                         }).ToList();               
                 return combo;
