@@ -1,0 +1,36 @@
+@using wall.Models;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+    <h1>Quote Dojo</h1>
+    <h5>Welcome, @ViewBag.user.first</h5>
+    <a href="logout">Logout</a>
+</div>
+<form action="addMessage" method="post">
+    <input type="hidden" name="userid" value="@ViewBag.user.id">
+    <p>Message: <input type="text" name="message" value=""></p>
+    <button type="submit" name="add">Add Message</button>
+</form>
+
+@{
+    foreach(Message message in ViewBag.messages){
+        <div>
+            <p style="margin:0">@message.message ||| @message.created_at</p>
+            @if(ViewBag.user.id == message.userid)
+            {
+                <form action="deleteMessage/@message.id" method="post"><button type="submit">Delete</button></form>
+            }
+        </div>
+        @foreach(Comment comment in message.comments)
+        {
+            <p>@comment.comment</p><br>
+        }
+        <form action="addComment" method="post">
+            <input type="hidden" name="messageid" value="@message.id">
+            <input type="text" name="comment">
+            <button type="submit">Add Comment</button>
+        </form>
+    }
+}

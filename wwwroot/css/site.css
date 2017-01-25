@@ -1,0 +1,16 @@
+button{
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    display: inline;
+}
+div p, div form{
+    display: inline;
+}
+div h1, div h5, div a{
+    display: inline;
+}
+h5{
+    margin-left: 400px;
+}

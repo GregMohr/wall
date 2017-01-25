@@ -1,0 +1,12 @@
+            @foreach(Comment commentItem in message.comments){
+                <p>@commentItem.comment</p>
+            }
+
+
+        <div id="commentsDisplay">
+            <form action="addComment" method="post">
+                <input type="hidden" name="messageid" value="@message.id">
+                <input type="text" name="comment" value="">
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>

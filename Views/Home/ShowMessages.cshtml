@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<a href="dashboard">Back</a>
+<a href="logout">Logout</a>
+
+<h1>The Wall</h1>
+<ul>
+  @using wall.Models;
+  @{
+    foreach(Message message in ViewBag.messages){
+      <p style="margin:0">@message.message ||| @message.created_at</p>
+      @if(ViewBag.user.id == message.userid)
+        {
+          <form action="deleteMessage/@message.id" method="post"><button type="submit">Delete</button></form>
+        }
+    }
+  }
+</ul>

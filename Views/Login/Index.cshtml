@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Login/Registration";
+}
+<h2>Please @ViewBag.view</h2>
+
+<a href="@ViewBag.showLink">@ViewBag.other</a>
+
+<form action="@ViewBag.view" method="post">
+    @if(ViewBag.view == "Register"){
+        <label>First Name:</label>
+        <input type="text" name="first">
+        <label>Last Name:</label>
+        <input type="text" name="last">
+    }
+    <label>Email:</label>
+    <input type="text" name="email">
+    <label>Password:</label>
+    <input type="password" name="password">
+    @if(ViewBag.view == "Register"){
+       <label>Confirm:</label>
+       <input type="password" name="confirm">
+    }
+    <button type="submit">@ViewBag.view</button>
+</form>
+@{
+    foreach(var error in ViewBag.err)
+    {
+        //If there are any errors for a field...
+        if(error.Errors.Count > 0)
+        {
+            // We show the first error for that field
+            <p>@error.Errors[0].ErrorMessage</p>
+        }
+    }
+    <p>@ViewBag.confirmFail</p> 
+}

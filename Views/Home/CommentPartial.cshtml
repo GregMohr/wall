@@ -1,0 +1,11 @@
+@using wall.Models;
+@model wall.Models.Comment
+<div id="commentsDisplay">
+    @foreach(Comment commentItem in message.comments){
+        <p>@commentItem.comment</p>
+    }
+    <form asp-controller="Home" asp-action="AddComment" method="post">
+        <input asp-for="comment"/>
+        <button type="submit">Add Comment</button>
+    </form>
+</div>
